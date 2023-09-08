@@ -3,7 +3,7 @@ import { AuthController } from "../controller/AuthController";
 import { LogInfo } from "../utils/logger";
 import { IUser } from "../domain/interfaces/IUser.interface";
 import { IAuth } from "../domain/interfaces/IAuth.interface";
-
+import { isUser, isAdmin, isTecnico, isComercial, isAnalista, isCoordinador, isContabilidad, isAlmacen } from "../middlewares/authJwt";
 
 // BCRYPT for passwords
 import bcrypt from 'bcrypt';
@@ -25,23 +25,25 @@ let authRouter = express.Router();
 authRouter.route('/register')
     .post(jsonParser, async (req: express.Request, res: Response)=>{
 
-        let { number, username, password, name, cedula, telefono, email, more_info} = req?.body;
+        let { number, username, password, name, cedula, telefono, email, more_info, roles} = req?.body;
+        console.log('Roles received:', roles);
         let hashedPassword = '';
 
-        if(number && username && password && name && cedula && telefono && email && more_info ){
+        if(number && username && password && name && cedula && telefono && email && more_info && roles ){
 
             // Obtain Password in Request and cypher
             let hashedPassword = bcrypt.hashSync(password, 8);
 
             let newUser: IUser = {
-                number:  number,
+                number: number,
                 username: username,
                 password: hashedPassword,
                 name: name,
                 cedula: cedula,
                 telefono: telefono,
                 email: email,
-                more_info: more_info
+                more_info: more_info,
+                roles: roles
             } 
             // Controller Instance to execute a method
             const controller: AuthController = new AuthController();
@@ -74,7 +76,7 @@ authRouter.route('/login')
             const controller: AuthController = new AuthController();
             
             
-            // TODO use IAuth
+         
 
             let auth: IAuth = {
                 username: username,
@@ -120,12 +122,40 @@ authRouter.route('/login')
                 })
             }
 
-         }) 
+        }); 
+            
+        authRouter.post('/forgot-password', jsonParser, async (req: express.Request, res: express.Response) => {
+        const { email } = req.body;
+        
+        const controller: AuthController = new AuthController();
 
+        let response:any = await controller.generateAndSendOTP(email);
 
+        return res.status(200).json(response);
+    });
 
-
-
+    authRouter.route('/otp-validator')
+           .post(jsonParser, async (req: express.Request, res: express.Response) => {
+               const { email, otp } = req.body;
+              
+               const controller: AuthController = new AuthController();
+              
+               let response: any = await controller.validateOTP({ email, otp });
+              
+               return res.status(response.status).json({ message: response.message });
+            });
+              
+    authRouter.route('/update-password')
+        .put(jsonParser, async (req: express.Request, res: express.Response) => {
+        const { email, newPassword } = req.body;
+        
+        const controller: AuthController = new AuthController();
+        const response: any = await controller.updatePassword({ email, newPassword });
+        
+        return res.status(response.status).json({ message: response.message });
+        
+    });
+    
 
 
     export default authRouter;
