@@ -1,11 +1,14 @@
-import { Get, Query, Route, Tags, Delete, Post, Put } from "tsoa";
+import { Get, Query, Route, Tags, Delete, Post, Put, Body } from "tsoa";
 import { IUserController } from "./interfaces";
-import { LogSuccess, LogError, LogWarning } from "../utils/logger";
+import { LogSuccess, LogError, LogWarning, LogInfo } from "../utils/logger";
 
 
 // ORM - Users Collection
 import { deleteUserByID, getAllUsers, getUserByID, updateUserByID } from "../domain/orm/User.orm";
 import { BasicResponse } from "./types";
+import { userEntity} from "../domain/entities/User.entity";
+import { roleEntity } from "../domain/entities/Roles.entity";
+import mongoose from "mongoose";
 
 
 
@@ -108,7 +111,6 @@ public async updateUser(@Query()id: string, user: any): Promise<any> {
     }
     return response;
 }
-
 
 
 
