@@ -2,6 +2,8 @@ import { ISede } from "../../domain/interfaces/ISede.interface";
 import { ITecnico } from "../../domain/interfaces/ITecnico.interface";
 import { IUser } from "../../domain/interfaces/IUser.interface";
 import { BasicResponse, ErrorResponse } from "../types";
+import { IClient } from "../../domain/interfaces/IClient.interface";
+
 
 export interface IHelloController {
     getMessage(name?:string): Promise<BasicResponse>;
@@ -60,6 +62,15 @@ export interface ISedeController{
 export interface ISearchController {
     searchUsersByKeyword(keyword: string): Promise<any>;
     searchSedesByKeyword(keyword: string): Promise<any>;
+    searchClientByKeyword(keyword: string): Promise<any>; 
+  }
+
+
+  export interface IClientController {
+    getClients(page: number, limit: number, id?: string): Promise<any>;
+    createClient(client: IClient): Promise<IClient>;
+    updateClient(id: string, client: any): Promise<any>;
+    deleteClient(id: string): Promise<void>;
   }
   
   
