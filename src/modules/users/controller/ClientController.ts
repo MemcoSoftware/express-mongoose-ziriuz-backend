@@ -1,13 +1,21 @@
 import { Get, Query, Route, Tags, Delete, Post, Put, Body } from "tsoa";
 import { IClientController } from "./interfaces";
+<<<<<<< HEAD:src/modules/users/controller/ClientController.ts
 import { LogSuccess, LogError, LogWarning, LogInfo } from "../../../utils/logger";
+=======
+import { LogSuccess, LogError, LogWarning, LogInfo } from "../utils/logger";
+>>>>>>> f407100a3881c8f3855b9832f4b4009ee4e080cb:src/controller/ClientController.ts
 
 // ORM - Clients Collection
 import { deleteClientByID, getAllClients, getClientByID, updateClientByID } from "../domain/orm/Client.orm";
 import { BasicResponse } from "./types";
 import { clientEntity } from "../domain/entities/Client.entity";
 import mongoose from "mongoose";
+<<<<<<< HEAD:src/modules/users/controller/ClientController.ts
 import { IClient } from "../domain/interfaces/IClient.interface";
+=======
+import { IClient } from "@/domain/interfaces/IClient.interface";
+>>>>>>> f407100a3881c8f3855b9832f4b4009ee4e080cb:src/controller/ClientController.ts
 
 @Route("/api/clients")
 @Tags("ClientController")

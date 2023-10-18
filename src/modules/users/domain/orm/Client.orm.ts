@@ -1,7 +1,11 @@
 import mongoose from 'mongoose';
 import { clientEntity } from '../entities/Client.entity';
 import { IClient } from '../interfaces/IClient.interface';
+<<<<<<< HEAD:src/modules/users/domain/orm/Client.orm.ts
 import { LogError, LogSuccess } from '../../../../utils/logger';
+=======
+import { LogError, LogSuccess } from '../../utils/logger';
+>>>>>>> f407100a3881c8f3855b9832f4b4009ee4e080cb:src/domain/orm/Client.orm.ts
 
 // Obtener todos los clientes
 export const getAllClients = async (page: number, limit: number): Promise<any[] | undefined> => {
