@@ -1,7 +1,17 @@
 import { Get, Query, Route, Tags, Delete, Post, Put, Body } from "tsoa";
 import { ISedeController } from "./interfaces";
+<<<<<<< HEAD
 import { LogSuccess, LogError, LogWarning } from "../../../utils/logger";
 import { deleteSedeByID, getAllSedes, getSedeByID, updateSedeByID, createSede, getClientByName } from "../domain/orm/Sede.orm";
+=======
+<<<<<<< HEAD:src/modules/users/controller/SedeController.ts
+import { LogSuccess, LogError, LogWarning } from "../../../utils/logger";
+import { deleteSedeByID, getAllSedes, getSedeByID, updateSedeByID, createSede, getClientByName } from "../domain/orm/Sede.orm";
+=======
+import { LogSuccess, LogError, LogWarning } from "../utils/logger";
+import { deleteSedeByID, getAllSedes, getSedeByID, updateSedeByID, createSede } from "../domain/orm/Sede.orm";
+>>>>>>> f407100a3881c8f3855b9832f4b4009ee4e080cb:src/controller/SedeController.ts
+>>>>>>> 385c8b4ee73675f304a49c743d21afc43241202d
 import { BasicResponse } from "./types";
 import { ISede } from "../domain/interfaces/ISede.interface";
 
@@ -23,6 +33,10 @@ export class SedeController implements ISedeController {
     }
 
     @Post("/")
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD:src/modules/users/controller/SedeController.ts
+>>>>>>> 385c8b4ee73675f304a49c743d21afc43241202d
 public async createSede(@Body() sedeData: any): Promise<any> {
   try {
     // Extraer el nombre del cliente de los datos de la sede
@@ -75,6 +89,25 @@ public async createSede(@Body() sedeData: any): Promise<any> {
 
 
 
+<<<<<<< HEAD
+=======
+=======
+    public async createSede(@Body() sedeData: ISede): Promise<any> {
+        let response: any = '';
+        try {
+            LogSuccess('[/api/sedes] Create Sede Request')
+            response = await createSede(sedeData);
+        } catch (error) {
+            LogError('[ORM ERROR]: Creating Sede');
+            response = {
+                message: 'Invalid format/entity'
+            }
+        }
+        return response;
+    }
+
+>>>>>>> f407100a3881c8f3855b9832f4b4009ee4e080cb:src/controller/SedeController.ts
+>>>>>>> 385c8b4ee73675f304a49c743d21afc43241202d
     @Delete("/")
     public async deleteSede(@Query() id?: string): Promise<any> {
         let response: any = '';
@@ -99,6 +132,10 @@ public async createSede(@Body() sedeData: any): Promise<any> {
     }
 
     @Put("/")
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD:src/modules/users/controller/SedeController.ts
+>>>>>>> 385c8b4ee73675f304a49c743d21afc43241202d
 public async updateSede(@Query() id: string, @Body() sedeData: any): Promise<any> {
     try {
         LogSuccess(`[/api/sedes] Update Sede By ID: ${id}`);
@@ -147,6 +184,30 @@ public async updateSede(@Query() id: string, @Body() sedeData: any): Promise<any
 
 }
 
+<<<<<<< HEAD
+=======
+=======
+    public async updateSede(@Query() id: string, @Body() sedeData: ISede): Promise<any> {
+        let response: any = '';
+        if (id) {
+            LogSuccess(`[/api/sedes] Update Sede By ID: ${id}`)
+            await updateSedeByID(id, sedeData).then((r) => {
+                response = {
+                    message: `Sede with ID ${id} updated successfully`
+                }
+            })
+        } else {
+            LogWarning('[/api/sedes] Update Sede Request WITHOUT ID')
+            response = {
+                message: 'Please, provide an Id to update an existing Sede'
+            }
+        }
+        return response;
+    }
+}
+
+>>>>>>> f407100a3881c8f3855b9832f4b4009ee4e080cb:src/controller/SedeController.ts
+>>>>>>> 385c8b4ee73675f304a49c743d21afc43241202d
 
 
 

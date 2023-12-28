@@ -97,7 +97,11 @@ export const getEquipoByID = async (id: string): Promise<IEquipo | undefined> =>
       .populate({
         path: 'modelo_equipos',
         model: equipoModeloModel,
+<<<<<<< HEAD
         select: 'modelo precio id_marca id_clase',
+=======
+        select: 'modelo precio',
+>>>>>>> 385c8b4ee73675f304a49c743d21afc43241202d
       })
       .populate({
         path: 'id_area',
@@ -250,4 +254,16 @@ export const getSedeByName = async (name: string): Promise<any | null> => {
     LogError(`[ORM ERROR]: Getting Sede by Name: ${error}`);
     return null;
   }
+<<<<<<< HEAD
 }
+=======
+}
+
+
+
+
+
+
+
+
+>>>>>>> 385c8b4ee73675f304a49c743d21afc43241202d

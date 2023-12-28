@@ -1,4 +1,12 @@
+<<<<<<< HEAD
 import { LogInfo } from '../../../utils/logger';
+=======
+<<<<<<< HEAD:src/modules/users/controller/SearchController.ts
+import { LogInfo } from '../../../utils/logger';
+=======
+import { LogInfo } from '../utils/logger';
+>>>>>>> f407100a3881c8f3855b9832f4b4009ee4e080cb:src/controller/SearchController.ts
+>>>>>>> 385c8b4ee73675f304a49c743d21afc43241202d
 import { userEntity } from '../domain/entities/User.entity';
 import { roleEntity } from '../domain/entities/Roles.entity';
 import mongoose from 'mongoose';

@@ -13,7 +13,11 @@ export const getAllAreasEquipos = async (page: number, limit: number): Promise<a
       .find({}, { _id: 0 })
       .limit(limit)
       .skip((page - 1) * limit)
+<<<<<<< HEAD
       .select('_id area')
+=======
+      .select('area')
+>>>>>>> 385c8b4ee73675f304a49c743d21afc43241202d
       .exec()
       .then((areasEquipos: IAreaEquipo[]) => {
         response.areasEquipos = areasEquipos;
@@ -34,7 +38,11 @@ export const getAreaEquipoByID = async (id: string): Promise<IAreaEquipo | undef
   try {
     let areaEquipoModel = areaEquipoEntity();
 
+<<<<<<< HEAD
     return await areaEquipoModel.findById(id).select('_id area').exec();
+=======
+    return await areaEquipoModel.findById(id).exec();
+>>>>>>> 385c8b4ee73675f304a49c743d21afc43241202d
   } catch (error) {
     LogError(`[ORM ERROR]: Getting AreaEquipo By ID: ${error}`);
   }

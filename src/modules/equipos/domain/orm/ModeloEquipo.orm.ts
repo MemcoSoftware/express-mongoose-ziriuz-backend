@@ -19,7 +19,11 @@ export const getAllModeloEquipos = async (page: number, limit: number): Promise<
       .find({}, { _id: 0 })
       .limit(limit)
       .skip((page - 1) * limit)
+<<<<<<< HEAD
       .select('_id modelo precio id_marca id_clase')
+=======
+      .select('modelo precio id_marca id_clase')
+>>>>>>> 385c8b4ee73675f304a49c743d21afc43241202d
       .populate({
         path: 'id_marca',
         model: marcaEquipo,
@@ -51,7 +55,11 @@ export const getModeloEquipoByID = async (id: string): Promise<IModeloEquipo | u
     const marcaEquipo = marcaEquipoEntity();
     const claseEquipo = classDeviceEntity();
     return await modeloEquipoModel.findById(id, { _id: 0 })
+<<<<<<< HEAD
       .select('_id modelo precio id_marca id_clase') // Include id_marca y id_clase
+=======
+      .select('modelo precio id_marca id_clase') // Include id_marca y id_clase
+>>>>>>> 385c8b4ee73675f304a49c743d21afc43241202d
       .populate({
         path: 'id_marca',
         model: marcaEquipo,

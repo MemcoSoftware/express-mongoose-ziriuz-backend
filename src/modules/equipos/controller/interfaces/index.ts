@@ -46,6 +46,7 @@ export interface IAreaEquipoController {
   updateAreaEquipo(id: string, areaEquipo: any): Promise<any>;
   createAreaEquipo(areaEquipo: any): Promise<any>;
 }
+<<<<<<< HEAD
 
 export interface IRepuestoEquipoController {
   // Read all Repuestos_Equipos from DATABASE || Get Repuesto_Equipo By ID
@@ -58,3 +59,5 @@ export interface IRepuestoEquipoController {
   createRepuestoEquipo(repuestoEquipo: any): Promise<any>;
 }
 
+=======
+>>>>>>> 385c8b4ee73675f304a49c743d21afc43241202d

@@ -118,9 +118,15 @@ public async updateEquipo(@Query() id: string, @Body() equipoData: any): Promise
       // Buscar la sede por nombre
       const sede = await getSedeByName(equipoData.id_sede);
 
+<<<<<<< HEAD
       if (!sede) {
         response.success = false;
         response.message = "La sede no se encontró en la base de datos."; // Devolvemos el mensaje de error
+=======
+      if (!sede.success) {
+        response.success = false;
+        response.message = sede.message; // Devolvemos el mensaje de error
+>>>>>>> 385c8b4ee73675f304a49c743d21afc43241202d
         return response;
       }
 

@@ -1,6 +1,14 @@
 import { Get, Query, Route, Tags, Delete, Post, Put, Body } from "tsoa";
 import { IUserController } from "./interfaces";
+<<<<<<< HEAD
 import { LogSuccess, LogError, LogWarning, LogInfo } from "../../../utils/logger";
+=======
+<<<<<<< HEAD:src/modules/users/controller/UsersController.ts
+import { LogSuccess, LogError, LogWarning, LogInfo } from "../../../utils/logger";
+=======
+import { LogSuccess, LogError, LogWarning, LogInfo } from "../utils/logger";
+>>>>>>> f407100a3881c8f3855b9832f4b4009ee4e080cb:src/controller/UsersController.ts
+>>>>>>> 385c8b4ee73675f304a49c743d21afc43241202d
 
 
 // ORM - Users Collection

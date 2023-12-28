@@ -13,7 +13,11 @@ export const getAllTiposEquipos = async (page: number, limit: number): Promise<a
       .find({}, { _id: 0 })
       .limit(limit)
       .skip((page - 1) * limit)
+<<<<<<< HEAD
       .select('_id tipo')
+=======
+      .select('tipo')
+>>>>>>> 385c8b4ee73675f304a49c743d21afc43241202d
       .exec()
       .then((tiposEquipos: ITipoEquipo[]) => {
         response.tiposEquipos = tiposEquipos;
@@ -34,7 +38,11 @@ export const getTipoEquipoByID = async (id: string): Promise<ITipoEquipo | undef
   try {
     let tipoEquipoModel = tipoEquipoEntity();
 
+<<<<<<< HEAD
     return await tipoEquipoModel.findById(id).select('_id tipo').exec();
+=======
+    return await tipoEquipoModel.findById(id).exec();
+>>>>>>> 385c8b4ee73675f304a49c743d21afc43241202d
   } catch (error) {
     LogError(`[ORM ERROR]: Getting TipoEquipo By ID: ${error}`);
   }
